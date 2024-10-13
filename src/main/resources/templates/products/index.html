@@ -10,28 +10,9 @@
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
 </head>
 <body>
-    <input type="hidden" id="products-data" th:value="${products}"/>
-        <!-- <div class="flex justify-center">
-            <h1 class="p-5 text-blue-500 text-2xl">Product List</h1>
-        </div> -->
-
-    <!-- <div class="mx-10 p-10 border border-blue-500">
-        <div th:if="${#lists.isEmpty(products)}" class="p-5 text-center text-gray-500">
-            No products to show
-        </div>
-        <div th:if="${!#lists.isEmpty(products)}" th:each="product : ${products}" class="p-5 border-b border-gray-200">
-            <h2 class="text-xl text-gray-700" th:text="${product.name}"></h2>
-            <p class="text-gray-500" th:text="${product.description}"></p>
-            <span class="text-green-500" th:text="${product.price}"></span>
-        </div>
-    </div>
-    <div class="flex justify-center">
-        <a href="/products/create" class="p-3 text-white bg-blue-500 rounded-lg my-5">Add Product</a>
-    </div>   -->
-
     <div id="root"></div>
-
 </body>
+<script src="/js/productList.js" type="text/babel"></script>
 <script type="text/babel" th:inline="javascript">
 
     const handleDelete = async (e) => {
@@ -45,30 +26,6 @@
         }
     };
     const productsData = /*[[${products}]]*/ [];
-    const ProductList = ({ products }) => {
-        return (
-            <div className="mx-10 p-10 border border-blue-500">
-                {productsData.length === 0 ? (
-                    <p>No products to show</p>
-                ) : (
-                    <ul>
-                        {productsData.map((product, index) => (
-                            <li key={index}>
-                                <h2 className="text-xl text-gray-700">{product.name}</h2>
-                                <p className="text-gray-500">{product.description}</p>
-                                <span className="text-green-500">Price: ${product.price}</span>
-                                <div></div>
-                                <button className="p-3 bg-red-500 my-5 rounded-lg text-white" onClick={async function name(params) {
-                                    await handleDelete(product.id);
-                                }}>Delete</button>
-                                <hr className="mb-3"/>
-                            </li>
-                        ))}
-                    </ul>
-                )}
-            </div>
-        );
-    }
 
     const App = () => {
         return (
