@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### JS ###
+src/main/resources/static/js/node_modules/*
+src/main/resources/static/js/public/js/*
+src/main/resources/static/js/.parcel-cache/*

@@ -1,4 +1,14 @@
-const ProductList = ({ products }) => {
+import React from 'react';
+
+const handleDelete = async (id) => {
+    console.log(id);
+    const response = await fetch(`/products/${id}`, { method: "DELETE" });
+
+    if (response.ok) {
+        window.location.reload();
+    }
+};
+export default function ProductList({ products }) {
     return (
         <div className="mx-10 p-10 border border-blue-500">
             {products.length === 0 ? (
@@ -11,10 +21,10 @@ const ProductList = ({ products }) => {
                             <p className="text-gray-500">{product.description}</p>
                             <span className="text-green-500">Price: ${product.price}</span>
                             <div></div>
-                            <button className="p-3 bg-red-500 my-5 rounded-lg text-white" onClick={async function name(params) {
+                            <button className="p-3 bg-red-500 my-5 rounded-lg text-white" onClick={async function () {
                                 await handleDelete(product.id);
                             }}>Delete</button>
-                            <hr className="mb-3"/>
+                            <hr className="mb-3" />
                         </li>
                     ))}
                 </ul>
@@ -22,5 +32,3 @@ const ProductList = ({ products }) => {
         </div>
     );
 }
-
-Window.ProductList = ProductList;

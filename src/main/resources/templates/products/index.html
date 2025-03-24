@@ -5,43 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thymereact Products</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
 </head>
 <body>
     <div id="root"></div>
+    <script th:inline="javascript">
+        const productsData = /*[[${products}]]*/ [];
+    </script>
+    <script type="module" src="/js/public/js/app.js"></script>
 </body>
-<script src="/js/productList.js" type="text/babel"></script>
-<script type="text/babel" th:inline="javascript">
-
-    const handleDelete = async (e) => {
-        console.log(e);
-        const response = await fetch(`/products/${e}`, {
-            method: 'DELETE'
-        });
-
-        if (response.ok) {
-            window.location.reload();
-        }
-    };
-    const productsData = /*[[${products}]]*/ [];
-
-    const App = () => {
-        return (
-            <div>
-                <div className="flex justify-center">
-                    <h1 className="p-5 text-blue-500 text-2xl">Product List</h1>
-                </div>
-                <ProductList products={ productsData } />
-                <div></div>
-                <div className="flex justify-center mt-5">
-                    <a href="/products/create" className="p-3 text-white bg-blue-500 rounded-lg">Add Product</a>
-                </div>
-            </div>
-        );
-    };
-
-    ReactDOM.render(<App />, document.getElementById('root'));
-</script>
 </html>
